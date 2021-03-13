@@ -86,7 +86,7 @@ void FragTrap::setArmorDamageReduction( int val ) {
     this->_armorDamageReduction = val;
 }
 
-std::string FragTrap::setName( std::string val ) {
+void FragTrap::setName( std::string val ) {
     this->_name = val;
 }
 
@@ -94,6 +94,7 @@ std::string FragTrap::setName( std::string val ) {
  * Canonical form
  */
 FragTrap::FragTrap( void ) {
+    std::cout << "FR4G-TP <the man has no name> f*** im alive i can cause damage to peoples now" << std::endl;
     this->_hitPoints = 100;
     this->_maxHitPoints = 100;
     this->_energyPoints = 100;
@@ -104,7 +105,11 @@ FragTrap::FragTrap( void ) {
     this->_armorDamageReduction = 5;
 }
 
-FragTrap::~FragTrap( void ) {}FragTrap::FragTrap( FragTrap const & src ) {
+FragTrap::~FragTrap( void ) {
+    std::cout << "FR4G-TP <" << this->_name << "> im going to a pretty place now" << std::endl;
+}
+
+FragTrap::FragTrap( FragTrap const & src ) {
     *this = src;
     return;
 }
@@ -135,6 +140,7 @@ FragTrap::FragTrap( std::string const & name ) {
     this->_rangedAttackDamage = 20;
     this->_armorDamageReduction = 5;
     this->_name = name;
+    std::cout << "FR4G-TP <" << this->_name << "> f*** im alive i can cause damage to peoples now" << std::endl;
     return ;
 }
 
@@ -165,13 +171,12 @@ void    FragTrap::beRepaired( unsigned int amount ) {
 // random 5 attaks
 void    FragTrap::vaulthunter_dot_exe(std::string const & target) {
     if (this->_energyPoints < 25) {
-        std::cout << "damn i dont have energy" << std::endl;
+        std::cout << "FR4G-TP <" << this->_name << "> Hmmm i do not have energy" << std::endl;
         return ;
     }
     this->setEnergyPoints(this->_energyPoints - 25);
     for (int i = 0; i < 5; i++)
     {
-        srand(time(NULL));
         int randValue = rand() % 2;
         switch (randValue)
         {
@@ -179,7 +184,7 @@ void    FragTrap::vaulthunter_dot_exe(std::string const & target) {
             this->rangedAttack(target);
             break;
         
-        default:
+        case 1:
             this->meleeAttack(target);
             break;
         }

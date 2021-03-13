@@ -1,8 +1,8 @@
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 # include <iostream>
 
-class FragTrap {
+class ScavTrap {
     private:
         int _hitPoints;
         int _maxHitPoints;
@@ -36,18 +36,19 @@ class FragTrap {
         void setName( std::string val );   
 
         // Canonical
-        FragTrap( void );
-        FragTrap( FragTrap const & src );
-        ~FragTrap( void );
-        FragTrap & operator=( FragTrap const & rhs );        
+        ScavTrap( void );
+        ScavTrap( ScavTrap const & src );
+        ~ScavTrap( void );
+        ScavTrap & operator=( ScavTrap const & rhs );        
         // Name Parametre of constructor
-        FragTrap( std::string const & name );       
+        ScavTrap( std::string const & name );       
          // methods
         void    rangedAttack( std::string const & target );
         void    meleeAttack( std::string const & target );
         void    takeDamage( unsigned int amount );
         void    beRepaired( unsigned int amount );
         // random 5 attack
-        void    vaulthunter_dot_exe(std::string const & target);
+        // void    vaulthunter_dot_exe(std::string const & target);
+        void    challengeNewcomer( void );
 };
 #endif

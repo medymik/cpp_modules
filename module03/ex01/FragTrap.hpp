@@ -33,7 +33,7 @@ class FragTrap {
         void setMeleeAttackDamage( int val );
         void setRangedAttackDamage( int val );
         void setArmorDamageReduction( int val );
-        std::string setName( std::string val );   
+        void setName( std::string val );   
 
         // Canonical
         FragTrap( void );
