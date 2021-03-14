@@ -1,10 +1,8 @@
-#include <iostream>
-#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
 
-int	main( void ) {
-
-	srand(time(NULL));
+int    main( void ) {
+    srand(time(NULL));
 
 	{
 		FragTrap p("Fragy");
@@ -12,7 +10,7 @@ int	main( void ) {
 		p.beRepaired(9);
 		p.vaulthunter_dot_exe("Badass");
 	}
-
+	std::cout << "==== second ====" << std::endl;
 	{
 		ScavTrap p("Tox");
 		p.takeDamage(500);
@@ -21,5 +19,4 @@ int	main( void ) {
 		p.challengeNewcomer();
 		p.challengeNewcomer();
 	}
-	return (0);
 }
