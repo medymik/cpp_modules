@@ -13,6 +13,7 @@ AssaultTerminator::AssaultTerminator( AssaultTerminator const & src ) {
 }
 
 AssaultTerminator & AssaultTerminator::operator=( AssaultTerminator const & rhs ) {
+    (void)rhs;
     return *this;
 }
 

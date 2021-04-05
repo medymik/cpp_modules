@@ -1,6 +1,12 @@
 #include "Squad.hpp"
 
 Squad::~Squad() {
+    while (this->lst) {
+        t_list *prev = this->lst;
+        this->lst = this->lst->next;
+        delete prev->item;
+        delete prev;
+    }
 }
 
 int Squad::getCount() const {
@@ -14,25 +20,26 @@ ISpaceMarine* Squad::getUnit(int index) const {
         if (i == index) {
             return tmp->item;
         }
+        tmp = tmp->next;
         i++;
     }
     return NULL;
 }
 
 int Squad::push(ISpaceMarine* marine) {
-    t_list node;
+    t_list *node = new t_list();
 
-    node.item = marine;
-    node.next = NULL;
+    node->item = marine;
+    node->next = NULL;
     if (this->lst == NULL) {
-        this->lst = &node;
+        this->lst = node;
     } else {
         t_list *tmp;
         tmp = this->lst;
         while (tmp->next != NULL) {
             tmp = tmp->next;
         }
-        tmp->next = &node;
+        tmp->next = node;
     }
     this->count += 1;
     return this->count;
