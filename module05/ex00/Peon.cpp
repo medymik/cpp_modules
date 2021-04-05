@@ -1,4 +1,4 @@
-#include "Peon.h"
+#include "Peon.hpp"
 
 Peon::Peon(void) {
 
