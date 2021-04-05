@@ -17,7 +17,7 @@ class Character {
         void    equip(AWeapon *);
         Character & operator=( Character const & rhs );
         std::string const & getName( void ) const;
-        AWeapon* const getWeapon( void ) const;
+        AWeapon* getWeapon( void ) const;
         int getAp( void ) const;
 };
 

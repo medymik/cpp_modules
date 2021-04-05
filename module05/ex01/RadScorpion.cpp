@@ -19,8 +19,7 @@ void    RadScorpion::takeDamage(int amount) {
     return;
 }
 
-RadScorpion::RadScorpion( RadScorpion const & src ) {
-    *this = src;
+RadScorpion::RadScorpion( RadScorpion const & src ) : Enemy(src) {
 }
 
 RadScorpion & RadScorpion::operator=( RadScorpion const & rhs ) {
