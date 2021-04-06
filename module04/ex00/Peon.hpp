@@ -1,21 +1,18 @@
-#ifndef PEON_HPP
-# define PEON_HPP
+#ifndef PEON_H
+# define PEON_H
 # include "Victim.hpp"
-# include <iostream>
+
 class Peon : public Victim {
     private:
-        // Default constructor
-        Peon( void );
+        Peon(void);
     public:
-        // Init constructor
-        Peon( std::string name );
-        // Copy Constructor
-        Peon( Peon const & src );
-        // Deconstructor
-        virtual ~Peon( void );
+        Peon(std::string const & name);
+        // Canonical form
+        Peon(Peon const & src);
+        virtual ~Peon(void);
+        Peon & operator=(Peon const & rhs);
 
-        virtual void getPolymorphed( void ) const;
+        // Polymorphed
+        virtual void  getPolymorphed( void ) const;
 };
-
-std::ostream & operator<<(std::ostream & o, Peon const & rhs);
 #endif

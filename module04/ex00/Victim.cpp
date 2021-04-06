@@ -1,23 +1,53 @@
 #include "Victim.hpp"
 
-Victim::Victim( std::string name ) : _name(name) {
-    std::cout << "Some random victim called " << this->_name << " just appeared!" << std::endl;
+// Default constructor
+Victim::Victim( void ) {
+    return;
 }
 
+// Copy Constructor
+Victim::Victim( Victim const & src ) {
+    *this = src;
+    return;
+}
+
+// Destructor
 Victim::~Victim( void ) {
-    std::cout << "Victim " << this->_name << " just died for no apparent reason!" << std::endl;
+    std::cout <<  "The victim " << this->name << " died for no apparent reasons!" << std::endl;
+    return;
 }
 
-std::ostream & operator<<(std::ostream & o, Victim const & rhs) {
+// Initialisation constructor
+Victim::Victim(std::string const & name) {
+    this->name = name;
+    std::cout << "A random victim called " << this->name << " just appeared!" << std::endl;
+}
+
+// Redirect to the output stream
+std::ostream & operator<<(std::ostream & o, Victim & rhs) {
     o << "I'm " << rhs.getName() << " and I like otters!" << std::endl;
     return o;
 }
 
-// Getters
-std::string     Victim::getName( void ) const {
-    return this->_name;
+// Operator =
+Victim & Victim::operator=(Victim const & rhs) {
+    if (this != &rhs) {
+        this->name = rhs.getName();
+    }
+    return *this;
 }
 
-void Victim::getPolymorphed( void ) const {
-    std::cout << this->_name << " has been turned into a cute little sheep!" << std::endl;
+// Getters
+std::string Victim::getName( void ) const {
+    return this->name;
+}
+
+// Setters
+void        Victim::setName( std::string const & name ) {
+    this->name = name;
+}
+
+// Polymorphed
+void        Victim::getPolymorphed( void ) const {
+    std::cout << this->name << " was just polymorphed in a cute little sheep!" << std::endl;
 }

@@ -1,22 +1,49 @@
-#include "Squad.hpp"
-#include "ISpaceMarine.hpp"
-#include "TacticalMarine.hpp"
-#include "AssaultTerminator.hpp"
+#include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-int main()
-{
-    ISpaceMarine* bob = new TacticalMarine;
-    ISpaceMarine* jim = new AssaultTerminator;
-    ISquad* vlc = new Squad;
-    vlc->push(bob);
-    vlc->push(jim);
-    for (int i = 0; i < vlc->getCount(); ++i)
+int     main() {
+
+    // Grade Too High Exception
+    try
     {
-        ISpaceMarine* cur = vlc->getUnit(i);
-        cur->battleCry();
-        cur->rangedAttack();
-        cur->meleeAttack();
+        Form frm("formulaire1", -1, 1);
     }
-    delete vlc;
-    return 0;
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    // Grade Too Low Exception
+    try
+    {
+        Form frm("formulaire1", 151, 1);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    // Bureaucrat cannot sign it Exception
+    try
+    {
+        Form frm("formulaire1", 2, 1);
+        Bureaucrat b("ymik", 3);
+        b.SignForm(frm);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    // Bureaucrat can sign it
+    try
+    {
+        Form frm("formulaire2", 40, 1);
+        std::cout << "State of frm2: " << frm.getSigned() << std::endl;
+        Bureaucrat b("khaled", 40);
+        b.SignForm(frm);
+        std::cout << "State of frm2: " << frm.getSigned() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 }

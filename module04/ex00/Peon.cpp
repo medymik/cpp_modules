@@ -1,26 +1,30 @@
 #include "Peon.hpp"
 
-// Init constructor
-Peon::Peon( std::string name ) : Victim(name) {
+Peon::Peon(void) {
+
+}
+
+Peon::Peon(std::string const & name): Victim(name) {
     std::cout << "Zog zog." << std::endl;
 }
 
-// Copy
-Peon::Peon( Peon const & src ) : Victim(src) {
+// Canonical form
+Peon::Peon(Peon const & src) {
     *this = src;
-    return;
 }
 
-// Destructor
-Peon::~Peon( void ) {
+Peon::~Peon(void) {
     std::cout << "Bleuark..." << std::endl;
 }
 
-void Peon::getPolymorphed( void ) const {
-    std::cout << this->getName() << " has been turned into a pink pony!" << std::endl;
+Peon & Peon::operator=(Peon const & rhs) {
+    if (this != &rhs) {
+        this->name = rhs.getName();
+    }
+    return *this;
 }
 
-std::ostream & operator<<(std::ostream & o, Peon const & rhs) {
-    o << "I'm "<< rhs.getName() << " and I like otters!" << std::endl;
-    return o;
+// Polymorphed
+void  Peon::getPolymorphed( void ) const {
+    std::cout << this->name << " was just polymorphed into a pink pony!" << std::endl;
 }

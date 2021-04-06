@@ -3,9 +3,13 @@
 # include "AWeapon.hpp"
 
 class PlasmaRifle : public AWeapon {
+    // private:
     public:
-        virtual void attack( void ) const;
         PlasmaRifle( void );
         PlasmaRifle( PlasmaRifle const & src );
+        virtual ~PlasmaRifle( void );
+
+        PlasmaRifle & operator=( PlasmaRifle const & rhs );
+        virtual void attack( void ) const;
 };
 #endif
