@@ -74,3 +74,15 @@ Bureaucrat& Bureaucrat::operator=( Bureaucrat const& rhs ) {
     }
     return *this;
 }
+
+void        Bureaucrat::executeForm(Form const& form) {
+    try
+    {
+        form.execute(*this);
+        std::cout << "<" << this->name << "> executes <" << form.getName() << "> " << std::endl; 
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+}

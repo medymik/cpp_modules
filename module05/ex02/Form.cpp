@@ -63,6 +63,7 @@ Form & Form::operator=(Form const& rhs) {
     if (this != &rhs) {
         this->_signed = rhs._signed;
         this->name = rhs.name;
+        this->target = rhs.target;
     }
     return *this;
 }
@@ -80,4 +81,11 @@ Form::Form(std::string const& name, int gradeSign, int gradeExec, std::string co
 
 std::string const& Form::getTarget() const {
     return this->target;
+}
+
+void    Form::execute(Bureaucrat const& executor) const {
+    if (!this->_signed)
+        throw UnsignedFormException();
+    if (this->getRequiredGradeToExecute() < executor.getGrade())
+        throw GradeTooLowException();
 }
