@@ -1,20 +1,41 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int     main() {
 
-    // // Grade Too Low To Sign Exception
-    try
+    // Grade Too Low To Exec the form Exception
+
     {
         PresidentialPardonForm frm("home");
-        Bureaucrat b("khaled", 150);
+        Bureaucrat b("khaled", 23);
         b.SignForm(frm);
+        b.executeForm(frm);
+        frm.action();
+        std::cout << "==================" << std::endl;
     }
-    catch(const std::exception& e)
+
+    // Not Signed Form
     {
-        std::cerr << e.what() << '\n';
+        RobotomyRequestForm frm("home");
+        Bureaucrat b("khaled", 5);
+        b.executeForm(frm);
+        frm.action();
+        std::cout << "==================" << std::endl;
     }
+
+    // Good form
+    {
+        ShrubberyCreationForm frm("home");
+        Bureaucrat b("mohammed", 1);
+        b.SignForm(frm);
+        b.executeForm(frm);
+        frm.action();
+        std::cout << "==================" << std::endl;
+    }
+
     // // Grade Too Low Exception
     // try
     // {
